@@ -4,11 +4,7 @@ from app.db.base import Base
 from app.db.session import engine
 
 app = FastAPI()
-
-
-@app.on_event("startup")
-def startup_event():
-    Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 
 app.include_router(router)
